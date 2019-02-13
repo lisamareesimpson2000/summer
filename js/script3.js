@@ -37,10 +37,9 @@ document.getElementById("btn").addEventListener("click", function(){
       // var holiday_data = new google.visualization.DataTable();
 
       google.charts.load('current', {'packages':['corechart']}); //loading the core chart
-      google.charts.setOnLoadCallback(drawLisaChart); //calling the function
-      // google.charts.setOnLoadCallback(drawHannahChart);
+      google.charts.setOnLoadCallback(myChart); //calling the function
 
-      function drawLisaChart() {
+      function myChart() {
         console.log(formValues[0].value);
 
         var holiday_data = new google.visualization.DataTable();
@@ -56,31 +55,17 @@ document.getElementById("btn").addEventListener("click", function(){
 
         var options = {
           'title': 'My Holiday Activities',
-          'width': 600,
-          'height': 400,
-          'legend': 'left',
-          // 'is3D':true,
-          'pieHole': 0.4,
-          // 'backgroundColor': '#f6fcfb',
-          'backgroundColor': {
-          fill: '#f6fcfb',
-          stroke: '#c5ede3',
-          strokeWidth: 10
-          },
-          slices: {
-            0: { color: 'yellow' },
-            1: { color: 'transparent' }, //removes slice
-            4: {offset: 0.2}, //explode slice
-            5: {offset: 0.3}, //explode slice
-          },
-          'colors': ['#ade6d8', '#9bcfc2', '#8ab8ac', '#79a197', '#678a81']
-
+          'width': 400,
+          'height':200
         };
 
-        var piechart = new google.visualization.PieChart(document.getElementById('div_chart_Lisa'));
+        var piechart = new google.visualization.AreaChart(document.getElementById('div_chart_Lisa'));
 
         piechart.draw(holiday_data, options);
       }
+});
+
+
 
 //HANNAH ACTIVITY AND HOURS 
 
@@ -98,19 +83,14 @@ document.getElementById("btn2").addEventListener("click", function(){
       
 
   }
+ 
+  document.getElementById("hours2").innerHTML = sum + " hours"; //display the value of sum
 
-       document.getElementById("hours2").innerHTML = sum + " hours"; //display the value of sum
-
-
-
-
-      // var holiday_data = new google.visualization.DataTable();
 
       google.charts.load('current', {'packages':['corechart']}); //loading the core chart
-      google.charts.setOnLoadCallback(drawHannahChart);
+      google.charts.setOnLoadCallback(myChart); //calling the function
 
-
-      function drawHannahChart() {
+      function myChart() {
         console.log(formValues[0].value);
 
         var holiday_data = new google.visualization.DataTable();
@@ -126,19 +106,12 @@ document.getElementById("btn2").addEventListener("click", function(){
 
         var options = {
           'title': 'My Holiday Activities',
-          'width': 600,
-          'height':400,
-          'legend': 'left',
-          'is3D':true,
-          'colors': ['#add8e6', '#9bc2cf', '#8aacb8', '#7997a1', '#67818a']
+          'width': 400,
+          'height':200
         };
 
-        var piechart = new google.visualization.PieChart(document.getElementById('div_chart_Hannah'));
+        var piechart = new google.visualization.AreaChart(document.getElementById('div_chart_Hannah'));
 
         piechart.draw(holiday_data, options);
       }
-
-
-});
-
 });
